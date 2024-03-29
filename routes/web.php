@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::resource('comments', CommentsController::class)->only(['store']);
+    Route::resource('comments', CommentsController::class)->only(['store', 'index']);
     Route::get('streaming', StreamingController::class)->name('streaming');
 });
 
