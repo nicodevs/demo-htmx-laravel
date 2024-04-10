@@ -20,7 +20,7 @@ class CommentsController extends Controller
         }
 
         session(['last_comment_read' => $comments->first()->id]);
-        return view('streaming', compact('comments'))->fragment('comments');
+        return view('stream', compact('comments'))->fragment('comments');
     }
 
     public function store(Request $request)
@@ -31,7 +31,7 @@ class CommentsController extends Controller
         event(new CommentSent());
 
         if ($request->hasHeader('hx-request')) {
-            return view('streaming')->fragment('comment-form');
+            return view('stream')->fragment('comment-form');
         }
 
         return back();

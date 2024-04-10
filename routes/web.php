@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentsController;
-use App\Http\Controllers\StreamingController;
+use App\Http\Controllers\StreamPageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resource('comments', CommentsController::class)->only(['store', 'index']);
-    Route::get('streaming', StreamingController::class)->name('streaming');
+    Route::get('stream', StreamPageController::class)->name('stream');
 });
 
 require __DIR__.'/auth.php';

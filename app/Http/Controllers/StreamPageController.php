@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class StreamingController extends Controller
+class StreamPageController extends Controller
 {
     public function __invoke(Request $request)
     {
@@ -13,6 +13,6 @@ class StreamingController extends Controller
         if ($comments->isNotEmpty()) {
             session(['last_comment_read' => $comments->first()->id]);
         }
-        return view('streaming', compact('comments'));
+        return view('stream', compact('comments'));
     }
 }
